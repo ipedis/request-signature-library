@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "request-signature-library"
+version = "0.1.0"
+description = ""
+authors = ["Tejas <tejas@ipedis.com>"]
+readme = "README.md"
+packages = [{include = "request_signature_library"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+httpx = "^0.23.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
