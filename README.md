@@ -21,8 +21,8 @@ REQUEST_SIGNATURE=your-secret-key
 - For now library uses timestamp, and url of the request to create hmac digest
 and if digest does not match, `InvalidSignatureException` will be thrown.
 - For working examples,
-  - For signing request check [Orchestrator API Client](https://github.com/docaxess/pdf-orchestrator/blob/RAIA-11-tejas/app/infrastructure/service/api/client.py)
-  - For verification, check [Parser Middleware](https://github.com/docaxess/pdf-parser/blob/RAIA-11-tejas/app/infrastructure/service/request_middleware.py)
+  - For signing request check [Orchestrator API Client](https://github.com/docaxess/pdf-orchestrator/blob/master/app/infrastructure/service/api/client.py)
+  - For verification, check [Parser Middleware](https://github.com/docaxess/pdf-parser/blob/master/app/infrastructure/service/request_middleware.py)
 
 #### TODOs
 
