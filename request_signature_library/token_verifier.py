@@ -15,7 +15,6 @@ class TokenVerifier:
             key=secret,
             data=api_key
         )
-        print(generated_signature)
-        print(request.headers.get('Authentication', ''))
+
         if not hmac.compare_digest(request.headers.get('Authentication', ''), generated_signature):
             raise InvalidSignatureException
