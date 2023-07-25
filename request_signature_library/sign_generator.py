@@ -1,12 +1,10 @@
 import hmac
 import hashlib
-from urllib.parse import urlparse
-
 from httpx import Request
 
 
 class SignGenerator:
-    def hmac_digest(self, data: str, key: str):
+    def hmac_digest(self, data: str, key: str) -> str:
         key_encoded = bytes(key, 'utf-8')
         data_encoded = bytes(data, 'utf-8')
 
@@ -14,7 +12,7 @@ class SignGenerator:
 
         return h.hexdigest()
 
-    def generate_signature(self, secret: str, request: Request):
+    def generate_signature(self, secret: str, request: Request) -> str:
         path = request.url.path
         path = path.replace('//', '/')
 
@@ -28,3 +26,6 @@ class SignGenerator:
         #     data = f"{data}{request.content}"
 
         return self.hmac_digest(data, secret)
+
+    def generate_token(self, key: str, data: str) -> str:
+        return self.hmac_digest(data=data, key=key)
