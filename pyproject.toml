@@ -8,8 +8,16 @@ packages = [{include = "request_signature_library"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
-httpx = "^0.23.3"
+httpx = "^0.28.1"
+poetry-audit-plugin = "^0.4.0"
 
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+pytest-mock = "^3.14.0"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [build-system]
 requires = ["poetry-core"]
