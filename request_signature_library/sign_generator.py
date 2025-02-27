@@ -16,14 +16,7 @@ class SignGenerator:
         path = request.url.path
         path = path.replace('//', '/')
 
-        # if request.url.query:
-        #     params = request.url.query
-        #     path = path + "?" + params.decode('utf-8') if isinstance(params, bytes) else params
-
         data = f"{request.method.upper()}{path}{request.headers.get('Request-Time', '')}"
-
-        # if request.:
-        #     data = f"{data}{request.content}"
 
         return self.hmac_digest(data, secret)
 
