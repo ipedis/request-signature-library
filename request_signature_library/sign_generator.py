@@ -12,8 +12,8 @@ class SignGenerator:
 
         return h.hexdigest()
 
-    def generate_signature(self, secret: str, request: Request) -> str:
-        path = request.url.path
+    def generate_signature(self, secret: str, request: Request, root_path: str = '') -> str:
+        path = root_path + request.url.path
         path = path.replace('//', '/')
 
         data = f"{request.method.upper()}{path}{request.headers.get('Request-Time', '')}"
