@@ -1,27 +1,43 @@
-[tool.poetry]
+[project]
 name = "request-signature-library"
-version = "0.1.1"
-description = ""
-authors = ["Tejas <tejas@ipedis.com>"]
+version = "2.0.0"
+description = "Sign HTTP requests with HMAC-SHA512 and verify them on the receiving service."
+authors = [{ name = "Tejas", email = "tejas@ipedis.com" }]
 readme = "README.md"
-packages = [{include = "request_signature_library"}]
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Topic :: Security",
+]
+dependencies = [
+    "httpx>=0.28.1",
+    # security floors for transitive dependencies of httpx
+    "h11>=0.16.0",
+    "anyio>=4.14.2",
+    "idna>=3.15",
+    "certifi>=2026.10.19",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.10,<4"
-httpx = "^0.28.1"
-h11 = ">=0.16.0"
-anyio = ">=4.14.2"
-idna = ">=3.15"
-certifi = ">=2026.10.19"
+[project.urls]
+Repository = "https://github.com/ipedis/request-signature-library"
 
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^9.0.3"
-pytest-mock = "^3.14.0"
+[dependency-groups]
+dev = [
+    "pip-audit>=2.10",
+    "pytest>=9.0.3",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["request_signature_library"]

@@ -1,5 +1,3 @@
-import hmac
-
 from httpx import Request
 
 from request_signature_library.exception.invalid_signature_exception import InvalidSignatureException
@@ -16,5 +14,5 @@ class TokenVerifier:
             data=api_key
         )
 
-        if not hmac.compare_digest(request.headers.get('Authentication', ''), generated_signature):
+        if not self.sign_generator.matches(request.headers.get('Authentication', ''), generated_signature):
             raise InvalidSignatureException
