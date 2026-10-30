@@ -22,3 +22,7 @@ class SignGenerator:
 
     def generate_token(self, key: str, data: str) -> str:
         return self.hmac_digest(data=data, key=key)
+
+    def matches(self, received: str, expected: str) -> bool:
+        # compare bytes: hmac.compare_digest raises TypeError on non-ASCII str
+        return hmac.compare_digest(received.encode('utf-8'), expected.encode('utf-8'))

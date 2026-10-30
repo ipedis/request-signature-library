@@ -1,11 +1,9 @@
-# tests/test_signer.py
 from unittest.mock import MagicMock
 
 from httpx import Request
 
 from request_signature_library.sign_generator import SignGenerator
 from request_signature_library.signer import Signer
-from tests.conf_test import sample_secret
 
 
 def test_sign_header_is_added_to_request(sample_secret):

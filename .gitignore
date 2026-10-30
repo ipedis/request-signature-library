@@ -1,2 +1,10 @@
 .idea
 __pycache__
+.venv
+.pytest_cache
+dist
+build
+*.egg-info
+
+# local agent instructions, not published
+CLAUDE.md
